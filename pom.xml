@@ -24,6 +24,7 @@
         <module>spring-security-demo</module>
         <module>spring-instrumentation-demo</module>
         <module>spring-servlet-demo</module>
+        <module>spring-oxm-demo</module>
     </modules>
 
     <properties>
