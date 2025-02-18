@@ -93,4 +93,28 @@ public class CustomContextListener
 1. @ServletComponentScan gereklidir
 2. Filter sıralaması önemlidir
 3. Servlet 6.0+ için Jakarta EE kullanılır
-4. Spring Boot otomatik yapılandırma sağlar 
+4. Spring Boot otomatik yapılandırma sağlar
+
+## API Dokümantasyonu
+
+Swagger UI üzerinden API dokümantasyonuna erişmek için:
+
+1. Uygulamayı başlatın
+2. Tarayıcıda http://localhost:8080/swagger-ui.html adresine gidin
+
+### Swagger/OpenAPI Özellikleri
+
+1. API Endpoint'leri
+   - Tüm endpoint'lerin listesi
+   - HTTP metodları
+   - Request/Response örnekleri
+
+2. API Gruplandırma
+   - Tag'ler ile endpoint'leri gruplandırma
+   - Alfabetik sıralama
+   - Metod bazlı sıralama
+
+3. Swagger UI
+   - İnteraktif API dokümantasyonu
+   - API'leri test etme imkanı
+   - Request/Response şemalarını görüntüleme 
