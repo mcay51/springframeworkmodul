@@ -25,6 +25,7 @@
         <module>spring-instrumentation-demo</module>
         <module>spring-servlet-demo</module>
         <module>spring-oxm-demo</module>
+        <module>spring-transaction-demo</module>
     </modules>
 
     <properties>
