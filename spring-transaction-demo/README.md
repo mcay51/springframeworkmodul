@@ -123,3 +123,26 @@ Swagger UI üzerinden API dokümantasyonuna erişmek için:
    - Tüm hesapları listele
    - Read-only transaction
    - Optimize edilmiş okuma işlemi 
+
+## Postman Collection
+
+API'yi test etmek için Postman collection'ı kullanabilirsiniz:
+
+1. Postman'i açın
+2. Import > Raw Text seçin
+3. `postman/Spring_Transaction_Demo.postman_collection.json` dosyasının içeriğini yapıştırın
+4. Import'a tıklayın
+
+### Test Senaryoları
+
+1. Önce `GET /api/bank/accounts` ile mevcut hesapları kontrol edin
+2. Farklı transfer metodlarını test edin:
+   - Yüksek izolasyonlu transfer
+   - Yeni transaction ile transfer
+   - Loglama ile transfer
+   - Programmatic transaction ile transfer
+3. Her transfer sonrası hesap bakiyelerini kontrol edin
+4. Hata senaryolarını test edin:
+   - Yetersiz bakiye
+   - Olmayan hesap
+   - Geçersiz miktar 

@@ -1,0 +1,159 @@
+{
+  "info": {
+    "_postman_id": "b8e5e8f0-5f1d-4e2c-8f1a-9b9b9b9b9b9b",
+    "name": "Spring Transaction Demo",
+    "description": "Spring Transaction yönetimi örnek uygulaması için API koleksiyonu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Hesap İşlemleri",
+      "item": [
+        {
+          "name": "Tüm Hesapları Listele",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/bank/accounts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "bank", "accounts"]
+            },
+            "description": "Read-only transaction ile tüm hesapları listeler"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transfer İşlemleri",
+      "item": [
+        {
+          "name": "Yüksek İzolasyonlu Transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromAccount\": \"123\",\n    \"toAccount\": \"456\",\n    \"amount\": 500.00\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/api/bank/transfer/high-isolation",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "bank", "transfer", "high-isolation"]
+            },
+            "description": "SERIALIZABLE izolasyon seviyesi ile para transferi yapar"
+          },
+          "response": []
+        },
+        {
+          "name": "Yeni Transaction ile Transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromAccount\": \"123\",\n    \"toAccount\": \"456\",\n    \"amount\": 300.00\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/api/bank/transfer/new-transaction",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "bank", "transfer", "new-transaction"]
+            },
+            "description": "REQUIRES_NEW propagation ile yeni bir transaction başlatır"
+          },
+          "response": []
+        },
+        {
+          "name": "Loglama ile Transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromAccount\": \"123\",\n    \"toAccount\": \"456\",\n    \"amount\": 200.00\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/api/bank/transfer/with-logging",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "bank", "transfer", "with-logging"]
+            },
+            "description": "Transfer işlemini loglar ve nested transaction örneği"
+          },
+          "response": []
+        },
+        {
+          "name": "Programmatic Transaction ile Transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"fromAccount\": \"123\",\n    \"toAccount\": \"456\",\n    \"amount\": 150.00\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8083/api/bank/transfer/programmatic",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "bank", "transfer", "programmatic"]
+            },
+            "description": "Manuel transaction yönetimi ile transfer işlemi"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8083",
+      "type": "string"
+    }
+  ]
+} 
