@@ -1,0 +1,286 @@
+{
+  "info": {
+    "_postman_id": "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
+    "name": "Spring Context Demo",
+    "description": "Spring Context modülünün tüm özelliklerini test etmek için API koleksiyonu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Bean Scopes",
+      "item": [
+        {
+          "name": "Test All Scopes",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/demo/scopes",
+            "description": "Singleton, Prototype ve Request scope'larını test eder"
+          },
+          "response": []
+        },
+        {
+          "name": "Test Request Scope (Call 1)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/demo/scopes",
+            "description": "İlk çağrıda request scope değerini alır"
+          },
+          "response": []
+        },
+        {
+          "name": "Test Request Scope (Call 2)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/demo/scopes",
+            "description": "İkinci çağrıda farklı bir request scope değeri almalıyız"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Internationalization (i18n)",
+      "item": [
+        {
+          "name": "Get Greeting (TR)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/demo/greeting?name=Mustafa&lang=tr",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "demo", "greeting"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Mustafa"
+                },
+                {
+                  "key": "lang",
+                  "value": "tr"
+                }
+              ]
+            },
+            "description": "Türkçe karşılama mesajı"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Greeting (EN)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/demo/greeting?name=Mustafa&lang=en",
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Mustafa"
+                },
+                {
+                  "key": "lang",
+                  "value": "en"
+                }
+              ]
+            },
+            "description": "İngilizce karşılama mesajı"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Event Handling",
+      "item": [
+        {
+          "name": "Publish Simple Event",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/demo/events?message=Test Event",
+              "query": [
+                {
+                  "key": "message",
+                  "value": "Test Event"
+                }
+              ]
+            },
+            "description": "Basit bir event yayınlar"
+          },
+          "response": []
+        },
+        {
+          "name": "Publish Complex Event",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/demo/events?message=Complex Event with Data",
+              "query": [
+                {
+                  "key": "message",
+                  "value": "Complex Event with Data"
+                }
+              ]
+            },
+            "description": "Veri içeren kompleks bir event yayınlar"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Environment & Profiles",
+      "item": [
+        {
+          "name": "Get Environment Info",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/demo/environment",
+            "description": "Aktif profil ve environment değişkenlerini gösterir"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "5. Resource Management",
+      "item": [
+        {
+          "name": "Read Sample Resource",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/demo/resources",
+            "description": "Örnek kaynak dosyasını okur"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "6. Bean Validation",
+      "item": [
+        {
+          "name": "Create Valid User",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/demo/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Mustafa Çay\",\n    \"email\": \"mustafa@example.com\",\n    \"age\": 25\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Geçerli kullanıcı verisi ile test"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Invalid User (Empty Name)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/demo/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"\",\n    \"email\": \"mustafa@example.com\",\n    \"age\": 25\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Boş isim ile test"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Invalid User (Invalid Email)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/demo/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Mustafa\",\n    \"email\": \"invalid-email\",\n    \"age\": 25\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Geçersiz email ile test"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Invalid User (Under Age)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/demo/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Mustafa\",\n    \"email\": \"mustafa@example.com\",\n    \"age\": 15\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "18 yaşından küçük kullanıcı ile test"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "7. Dependency Injection",
+      "item": [
+        {
+          "name": "Test DI",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/demo/di",
+            "description": "Dependency Injection yapısını test eder"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "8. Bean Lifecycle",
+      "item": [
+        {
+          "name": "Test Lifecycle Methods",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/demo/lifecycle",
+            "description": "Bean lifecycle metodlarını test eder"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8084",
+      "type": "string"
+    }
+  ]
+} 

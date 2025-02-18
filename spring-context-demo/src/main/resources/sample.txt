@@ -1,0 +1,2 @@
+Bu bir örnek kaynak dosyasıdır.
+Spring Context'in resource handling özelliğini gösterir. 
