@@ -19,6 +19,9 @@
     <modules>
         <module>spring-core-demo</module>
         <module>spring-aop-demo</module>
+        <module>spring-data-demo</module>
+        <module>spring-web-demo</module>
+        <module>spring-security-demo</module>
     </modules>
 
     <properties>
