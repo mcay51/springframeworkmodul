@@ -27,4 +27,50 @@ Spring Instrumentation, Java sınıflarının yükleme zamanında (load-time) ve
 4. Transaction Yönetimi
 5. Cache Yönetimi
 
-## Proje Yapısı 
+## Proje Yapısı
+
+```
+src/main/java/
+  └── tr/com/mustafacay/instrumentation/
+      ├── annotation/
+      │   └── MonitorPerformance.java
+      ├── aspect/
+      │   └── PerformanceMonitoringAspect.java
+      ├── service/
+      │   └── ExampleService.java
+      └── SpringInstrumentationDemoApplication.java
+```
+
+## Kurulum
+
+1. JVM Argümanları Ekleme:
+```bash
+-javaagent:/path/to/spring-instrument.jar
+```
+
+2. Maven Dependency:
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-instrument</artifactId>
+</dependency>
+```
+
+## Örnek Kullanım
+
+```java
+@Service
+public class ExampleService {
+    
+    @MonitorPerformance
+    public void slowOperation() {
+        // Method implementation
+    }
+}
+```
+
+## Notlar
+
+1. Load-time weaving için JVM argümanlarının doğru yapılandırılması gerekir
+2. Performans etkisi göz önünde bulundurulmalıdır
+3. Test ortamında farklı yapılandırma gerekebilir 
