@@ -89,3 +89,37 @@ Transaction logging
 2. Propagation level'ları dikkatli seçilmelidir
 3. Exception handling önemlidir
 4. Performance için transaction süreleri optimize edilmelidir 
+
+## API Dokümantasyonu
+
+Swagger UI üzerinden API dokümantasyonuna erişmek için:
+
+1. Uygulamayı başlatın
+2. Tarayıcıda http://localhost:8080/swagger-ui.html adresine gidin
+
+### API Endpoint'leri
+
+1. POST /api/bank/transfer/high-isolation
+   - Yüksek izolasyonlu para transferi
+   - SERIALIZABLE izolasyon seviyesi
+   - Özel exception handling
+
+2. POST /api/bank/transfer/new-transaction
+   - Yeni transaction ile para transferi
+   - REQUIRES_NEW propagation
+   - Exception durumunda rollback yok
+
+3. POST /api/bank/transfer/with-logging
+   - Loglama ile para transferi
+   - Nested transaction örneği
+   - Transfer ve log işlemleri ayrı transaction'larda
+
+4. POST /api/bank/transfer/programmatic
+   - Programmatic transaction ile transfer
+   - Manuel transaction yönetimi
+   - TransactionTemplate kullanımı
+
+5. GET /api/bank/accounts
+   - Tüm hesapları listele
+   - Read-only transaction
+   - Optimize edilmiş okuma işlemi 

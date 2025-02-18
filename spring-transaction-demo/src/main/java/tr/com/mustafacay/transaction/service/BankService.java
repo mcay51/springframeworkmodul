@@ -8,6 +8,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import tr.com.mustafacay.transaction.entity.Account;
 import tr.com.mustafacay.transaction.exception.InsufficientBalanceException;
 import tr.com.mustafacay.transaction.repository.AccountRepository;
+import tr.com.mustafacay.transaction.exception.AccountNotFoundException;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -108,6 +109,14 @@ public class BankService {
                                BigDecimal amount) {
         Account fromAccount = accountRepository.findByAccountNumber(fromAccountNumber);
         Account toAccount = accountRepository.findByAccountNumber(toAccountNumber);
+        
+        if (fromAccount == null) {
+            throw new AccountNotFoundException(fromAccountNumber);
+        }
+        
+        if (toAccount == null) {
+            throw new AccountNotFoundException(toAccountNumber);
+        }
         
         if (fromAccount.getBalance().compareTo(amount) < 0) {
             throw new InsufficientBalanceException("Yetersiz bakiye");
