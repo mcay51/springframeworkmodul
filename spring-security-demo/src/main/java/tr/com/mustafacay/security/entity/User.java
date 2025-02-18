@@ -25,16 +25,22 @@ public class User {
     
     @NotBlank
     @Size(min = 3, max = 20)
+    @Column(nullable = false)
     private String username;
     
     @NotBlank
     @Size(max = 50)
     @Email
+    @Column(nullable = false)
     private String email;
     
     @NotBlank
     @Size(min = 6, max = 120)
+    @Column(nullable = false)
     private String password;
+    
+    @Column(nullable = false)
+    private Boolean active = true;
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
@@ -49,6 +55,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.active = true;
     }
     
     public Long getId() {
@@ -89,5 +96,13 @@ public class User {
     
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+    
+    public Boolean getActive() {
+        return active;
+    }
+    
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 } 

@@ -86,20 +86,85 @@ public enum RoleType {
 
 ## Kurulum
 
-1. PostgreSQL veritabanını oluşturun
+1. PostgreSQL veritabanını oluşturun:
+```sql
+CREATE DATABASE springdatadb;
+CREATE SCHEMA springsecuritydb;
+CREATE SCHEMA springsecuritydb_test;
+```
+
 2. application.properties dosyasındaki veritabanı ayarlarını güncelleyin
 3. Projeyi derleyin: `mvn clean install`
 4. Uygulamayı çalıştırın: `mvn spring-boot:run`
 
-## API Endpoints
+## Kullanım Örnekleri
 
-Detaylı API dokümantasyonu için: http://localhost:8082/swagger-ui.html
+### 1. Yeni Kullanıcı Kaydı
 
-## Güvenlik
+```bash
+curl -X POST http://localhost:8082/api/auth/signup \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "password123",
+    "roles": ["user"]
+  }'
+```
 
-- Şifreler BCrypt ile hashlenir
-- JWT token'ları 24 saat geçerlidir
-- Hassas endpointler role-based authorization ile korunur
+Başarılı yanıt:
+```json
+{
+  "message": "User registered successfully!"
+}
+```
+
+### 2. Kullanıcı Girişi
+
+```bash
+curl -X POST http://localhost:8082/api/auth/signin \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "testuser",
+    "password": "password123"
+  }'
+```
+
+Başarılı yanıt:
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9...",
+  "type": "Bearer",
+  "id": 1,
+  "username": "testuser",
+  "email": "test@example.com",
+  "roles": ["ROLE_USER"]
+}
+```
+
+### 3. JWT Token Kullanımı
+
+Protected bir endpoint'e istek:
+```bash
+curl -X GET http://localhost:8082/api/test/user \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9..."
+```
+
+## Swagger/OpenAPI
+
+API dokümantasyonuna erişmek için:
+http://localhost:8082/swagger-ui.html
+
+## Postman Collection
+
+Test için hazır Postman collection'ı `postman` klasöründe bulabilirsiniz.
+
+## Güvenlik Notları
+
+1. JWT token'ları 24 saat geçerlidir
+2. Şifreler BCrypt ile hashlenir
+3. Role-based authorization kullanılmaktadır
+4. Cross-Origin Resource Sharing (CORS) yapılandırılmıştır
 
 ## Test
 
