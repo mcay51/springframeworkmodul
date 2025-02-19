@@ -8,7 +8,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.3</version>
-        <relativePath/>
     </parent>
 
     <groupId>tr.com.mustafacay</groupId>
@@ -17,16 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-core-demo</module>
-        <module>spring-aop-demo</module>
-        <module>spring-data-demo</module>
-        <module>spring-web-demo</module>
-        <module>spring-security-demo</module>
-        <module>spring-instrumentation-demo</module>
-        <module>spring-servlet-demo</module>
-        <module>spring-oxm-demo</module>
-        <module>spring-transaction-demo</module>
-        <module>spring-context-demo</module>
+        <module>spring-spel-demo</module>
     </modules>
 
     <properties>
@@ -36,4 +26,22 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

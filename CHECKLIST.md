@@ -14,6 +14,7 @@
 - [ ] Kod içi açıklayıcı yorumlar ekle
 - [ ] Best practice'lere uygun kod yaz
 - [ ] Interface tabanlı tasarım yap
+- [ ] Katmanlı mimari yapısında model sınıflarını entity klasörü altında konumlandır
 
 ### 3. Katmanlar
 - [ ] Controller katmanı
@@ -63,6 +64,7 @@
 - [ ] Swagger/OpenAPI dokümantasyonu
 - [ ] Kurulum talimatları
 - [ ] Örnek kullanım senaryoları
+- [ ] Postman collection
 
 ### 9. Final Kontrol
 - [ ] Kod kalite kontrolü
