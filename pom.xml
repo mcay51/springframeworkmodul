@@ -14,10 +14,21 @@
     <artifactId>spring-framework</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
     <modules>
+        <module>spring-core-demo</module>
+        <module>spring-aop-demo</module>
+        <module>spring-data-demo</module>
+        <module>spring-web-demo</module>
+        <module>spring-security-demo</module>
+        <module>spring-instrumentation-demo</module>
+        <module>spring-servlet-demo</module>
+        <module>spring-oxm-demo</module>
+        <module>spring-transaction-demo</module>
+        <module>spring-context-demo</module>
         <module>spring-spel-demo</module>
+        <module>spring-interceptor-demo</module>
     </modules>
+
 
     <properties>
         <java.version>17</java.version>
