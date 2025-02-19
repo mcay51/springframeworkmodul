@@ -6,23 +6,37 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import tr.com.mustafacay.interceptor.LoggingInterceptor;
 import tr.com.mustafacay.interceptor.auth.AuthenticationInterceptor;
+import tr.com.mustafacay.interceptor.performance.PerformanceInterceptor;
+import tr.com.mustafacay.interceptor.logging.RequestResponseLoggingInterceptor;
 
 @Configuration
 @RequiredArgsConstructor
 public class WebMvcConfig implements WebMvcConfigurer {
 
     private final AuthenticationInterceptor authenticationInterceptor;
+    private final PerformanceInterceptor performanceInterceptor;
+    private final RequestResponseLoggingInterceptor requestResponseLoggingInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // Logging interceptor tüm istekleri yakalar
+        // Request/Response logging interceptor
+        registry.addInterceptor(requestResponseLoggingInterceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/error", "/favicon.ico");
+
+        // Performance interceptor
+        registry.addInterceptor(performanceInterceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/error", "/favicon.ico");
+
+        // Basic logging interceptor
         registry.addInterceptor(new LoggingInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/error", "/favicon.ico");
 
-        // Authentication interceptor güvenli endpointleri korur
+        // Authentication interceptor
         registry.addInterceptor(authenticationInterceptor)
                 .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/public/**", "/api/auth/**");
+                .excludePathPatterns("/api/public/**", "/api/auth/**", "/api/performance/**");
     }
 } 
