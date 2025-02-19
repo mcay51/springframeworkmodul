@@ -1,0 +1,68 @@
+{
+  "info": {
+    "name": "Interceptor Demo API",
+    "description": "Spring Interceptor Demo API koleksiyonu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Public Endpoint",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/public/test",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "public", "test"]
+        }
+      }
+    },
+    {
+      "name": "Admin Endpoint",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer token123"
+          },
+          {
+            "key": "X-User-Role",
+            "value": "ADMIN"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/admin/test",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "admin", "test"]
+        }
+      }
+    },
+    {
+      "name": "User Endpoint",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer token123"
+          },
+          {
+            "key": "X-User-Role",
+            "value": "USER"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/user/test",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "user", "test"]
+        }
+      }
+    }
+  ]
+} 

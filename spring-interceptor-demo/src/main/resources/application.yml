@@ -4,3 +4,12 @@ server:
 spring:
   application:
     name: spring-interceptor-demo 
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    tryItOutEnabled: true 
