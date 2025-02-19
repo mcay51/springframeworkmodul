@@ -1,0 +1,32 @@
+{
+  "info": {
+    "name": "SpEL Demo API",
+    "description": "Spring Expression Language Demo API koleksiyonu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Evaluate Expression",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/spel/evaluate",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "spel", "evaluate"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"expression\": \"2 + 2\"\n}"
+        }
+      }
+    }
+  ]
+} 

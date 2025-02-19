@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * SpEL ifadesi değerlendirme isteği için DTO sınıfı.
@@ -18,12 +19,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "SpEL ifadesi değerlendirme isteği")
 public class SpELRequestDTO {
     
     /**
      * Değerlendirilecek SpEL ifadesi.
      * Boş olamaz.
      */
+    @Schema(description = "Değerlendirilecek SpEL ifadesi", example = "2 + 2")
     @NotBlank(message = "SpEL ifadesi boş olamaz")
     private String expression;
     
@@ -31,6 +34,7 @@ public class SpELRequestDTO {
      * İfadenin değerlendirileceği bağlam nesnesi.
      * Opsiyonel. Null olabilir.
      */
+    @Schema(description = "İfadenin değerlendirileceği bağlam nesnesi")
     private Object context;
     
     /**
@@ -38,6 +42,7 @@ public class SpELRequestDTO {
      * Örnek: "string", "boolean", "number" vb.
      * Opsiyonel. Null olabilir.
      */
+    @Schema(description = "Beklenen sonuç tipi", example = "string")
     private String targetType;
     
     /**
