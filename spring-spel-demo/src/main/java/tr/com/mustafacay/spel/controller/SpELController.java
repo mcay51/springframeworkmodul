@@ -2,8 +2,6 @@ package tr.com.mustafacay.spel.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,6 +12,10 @@ import tr.com.mustafacay.spel.dto.SpELRequestDTO;
 import tr.com.mustafacay.spel.dto.SpELResponseDTO;
 import tr.com.mustafacay.spel.mapper.SpELMapper;
 import tr.com.mustafacay.spel.service.SpELEvaluator;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api/spel")
@@ -66,4 +68,20 @@ public class SpELController {
         SpELResponseDTO response = spelMapper.toResponseDTO(request, result);
         return ResponseEntity.ok(response);
     }
+    private Class<?> getResultType(String type) {
+        return switch (type.toLowerCase()) {
+            case "string" -> String.class;
+            case "boolean" -> Boolean.class;
+            case "number" -> Number.class;
+            case "integer" -> Integer.class;
+            case "double" -> Double.class;
+            case "long" -> Long.class;
+            case "float" -> Float.class;
+            case "date" -> Date.class;
+            case "localdate" -> LocalDate.class;
+            case "localdatetime" -> LocalDateTime.class;
+            default -> throw new IllegalArgumentException("Desteklenmeyen tip: " + type);
+        };
+    }
+
 } 
