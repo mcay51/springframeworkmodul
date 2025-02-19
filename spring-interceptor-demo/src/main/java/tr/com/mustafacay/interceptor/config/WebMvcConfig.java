@@ -8,6 +8,7 @@ import tr.com.mustafacay.interceptor.LoggingInterceptor;
 import tr.com.mustafacay.interceptor.auth.AuthenticationInterceptor;
 import tr.com.mustafacay.interceptor.performance.PerformanceInterceptor;
 import tr.com.mustafacay.interceptor.logging.RequestResponseLoggingInterceptor;
+import tr.com.mustafacay.interceptor.annotation.RoleBasedInterceptor;
 
 @Configuration
 @RequiredArgsConstructor
@@ -16,6 +17,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private final AuthenticationInterceptor authenticationInterceptor;
     private final PerformanceInterceptor performanceInterceptor;
     private final RequestResponseLoggingInterceptor requestResponseLoggingInterceptor;
+    private final RoleBasedInterceptor roleBasedInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -33,6 +35,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoggingInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/error", "/favicon.ico");
+
+        // Role based interceptor
+        registry.addInterceptor(roleBasedInterceptor)
+                .addPathPatterns("/api/**");
 
         // Authentication interceptor
         registry.addInterceptor(authenticationInterceptor)
