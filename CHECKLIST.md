@@ -1,5 +1,6 @@
 # Spring Framework Modül Geliştirme Kontrol Listesi
 
+
 ## Her Yeni Modül İçin Yapılacaklar
 
 ### 1. Proje Yapısı
@@ -73,4 +74,101 @@
 - [ ] Build kontrolü
 - [ ] API dokümantasyon kontrolü
 - [ ] Exception handling kontrolü
-- [ ] Validation kontrolü 
+- [ ] Validation kontrolü
+
+## 1. Proje Yapısı
+- [ ] pom.xml yapılandırması
+- [ ] Temel paket yapısı
+- [ ] Gerekli bağımlılıklar
+- [ ] Maven modül yapısı
+
+## 2. Konfigürasyon
+- [ ] application.yml/properties
+- [ ] Profil bazlı konfigürasyon (dev/test/prod)
+- [ ] Loglama yapılandırması
+- [ ] Özel konfigürasyon sınıfları
+
+## 3. Entity/DTO
+- [ ] Entity sınıfları
+- [ ] DTO sınıfları
+- [ ] Mapper sınıfları
+- [ ] Validasyon kuralları
+
+## 4. Servis Katmanı
+- [ ] Interface tanımları
+- [ ] Servis implementasyonları
+- [ ] Business logic
+- [ ] Exception handling
+
+## 5. README.md
+- [ ] Modül açıklaması
+- [ ] Proje yapısı
+- [ ] Özellikler
+- [ ] Nasıl çalışır
+- [ ] Önemli kavramlar
+- [ ] Teknolojiler
+- [ ] Çalıştırma talimatları
+- [ ] Test talimatları
+- [ ] Örnek çıktılar
+
+## 6. Veritabanı
+- [ ] Docker PostgreSQL bağlantısı
+- [ ] SQL scriptleri
+- [ ] Entity sınıfları
+- [ ] Repository katmanı
+
+## 7. Test
+- [ ] Unit testler
+- [ ] Integration testler
+- [ ] Test coverage kontrolü
+- [ ] Controller testleri
+- [ ] Service testleri
+- [ ] DTO converter testleri
+
+## 8. Dokümantasyon
+- [ ] API dokümantasyonu
+- [ ] Swagger/OpenAPI dokümantasyonu
+- [ ] Kurulum talimatları
+- [ ] Örnek kullanım senaryoları
+- [ ] Postman collection
+
+## 9. Güvenlik (Yeni Eklenen)
+- [ ] Authentication yapılandırması
+- [ ] Authorization kuralları
+- [ ] JWT/OAuth2 entegrasyonu
+- [ ] CORS yapılandırması
+- [ ] Input validasyonu
+- [ ] XSS koruması
+- [ ] SQL injection koruması
+
+## 10. Monitoring/Logging (Yeni Eklenen)
+- [ ] Actuator endpoints
+- [ ] Health checks
+- [ ] Metrics toplama
+- [ ] Loglama stratejisi
+- [ ] Log aggregation
+- [ ] Alarm mekanizması
+
+## 11. CI/CD (Yeni Eklenen)
+- [ ] GitHub Actions/Jenkins pipeline
+- [ ] Build scriptleri
+- [ ] Test automation
+- [ ] Docker image oluşturma
+- [ ] Deployment scriptleri
+- [ ] Rollback stratejisi
+
+## 12. Performance (Yeni Eklenen)
+- [ ] Caching mekanizması
+- [ ] Connection pooling
+- [ ] Query optimizasyonu
+- [ ] Load testing
+- [ ] Resource kullanım optimizasyonu
+- [ ] Async operasyonlar
+
+## 13. Final Kontrol
+- [ ] Kod kalitesi
+- [ ] Test coverage
+- [ ] Dokümantasyon
+- [ ] Güvenlik kontrolleri
+- [ ] Performance testleri
+- [ ] Deployment hazırlığı 
